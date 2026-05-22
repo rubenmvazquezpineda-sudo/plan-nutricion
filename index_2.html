@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa Integral de Salud y Nutrición Evolutiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gd:#1a4d30;--gm:#2e7d52;--gl:#e6f4ec;--gs:#f0f9f4;
+  --warm:#f7f3ef;--amber:#c17d2a;--amber-light:#fdf3e7;
+  --text:#1c2b22;--muted:#5a7060;--white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--warm);}
+
+/* HERO */
+.hero{background:var(--gd);color:var(--white);padding:4.5rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:40px;background:var(--warm);clip-path:ellipse(55% 100% at 50% 100%);}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:.3rem 1rem;font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:1.1rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:700;line-height:1.2;max-width:640px;margin:0 auto .9rem;}
+.hero p{font-size:.95rem;opacity:.8;max-width:540px;margin:0 auto;line-height:1.75;}
+
+/* NAV */
+.nav{background:var(--gm);display:flex;justify-content:center;flex-wrap:wrap;gap:.2rem;padding:.55rem 1rem;position:sticky;top:0;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.nav a{color:var(--white);text-decoration:none;font-size:.78rem;font-weight:500;padding:.38rem .9rem;border-radius:20px;letter-spacing:.3px;transition:background .2s;}
+.nav a:hover{background:rgba(255,255,255,.18);}
+
+/* CONTAINER */
+.wrap{max-width:980px;margin:0 auto;padding:0 1.25rem;}
+
+/* ── PRODUCTO DESTACADO ── */
+.product-hero{background:var(--gd);border-radius:18px;padding:2.5rem 2rem;margin:3rem auto;max-width:820px;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;color:var(--white);}
+@media(max-width:640px){.product-hero{grid-template-columns:1fr;text-align:center;}}
+.product-hero .badge-new{display:inline-block;background:var(--amber);color:var(--white);font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.25rem .75rem;border-radius:20px;margin-bottom:.75rem;}
+.product-hero h2{font-family:'Playfair Display',serif;font-size:1.65rem;line-height:1.25;margin-bottom:.6rem;}
+.product-hero .sub{font-size:.88rem;opacity:.75;line-height:1.65;margin-bottom:1.25rem;}
+.feat-list{list-style:none;margin-bottom:1.5rem;}
+.feat-list li{font-size:.82rem;padding:.3rem 0;opacity:.85;display:flex;align-items:flex-start;gap:.5rem;}
+.feat-list li::before{content:'✓';color:#6ad4a0;font-weight:700;flex-shrink:0;margin-top:1px;}
+.price-block{text-align:center;}
+.price-tag{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;color:var(--amber);line-height:1;}
+.price-sub{font-size:.75rem;opacity:.6;margin-top:.25rem;margin-bottom:1.2rem;}
+.btn-buy{display:inline-block;background:var(--amber);color:var(--white);text-decoration:none;font-weight:700;font-size:1rem;padding:.9rem 2.2rem;border-radius:40px;letter-spacing:.3px;transition:transform .18s,box-shadow .18s;box-shadow:0 4px 16px rgba(193,125,42,.35);}
+.btn-buy:hover{transform:translateY(-2px);box-shadow:0 7px 24px rgba(193,125,42,.45);}
+.btn-buy:active{transform:translateY(0);}
+.guarantee{font-size:.72rem;opacity:.55;margin-top:.8rem;}
+.pdf-preview{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:1.25rem;text-align:center;}
+.pdf-icon{font-size:3.5rem;display:block;margin-bottom:.5rem;}
+.pdf-preview p{font-size:.78rem;opacity:.65;line-height:1.55;}
+
+/* ── SECCIONES PROGRAMA ── */
+.sec-label{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--gm);font-weight:600;margin-bottom:.4rem;}
+.sec{margin:2.5rem 0;}
+.sec-header{display:flex;align-items:center;gap:.85rem;margin-bottom:.5rem;}
+.sec-num{width:34px;height:34px;border-radius:50%;background:var(--gd);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;flex-shrink:0;}
+.sec h2{font-family:'Playfair Display',serif;color:var(--gd);font-size:1.3rem;}
+.sec-desc{font-size:.84rem;color:var(--muted);margin-bottom:1.2rem;padding-left:48px;line-height:1.65;}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--gl),transparent);margin:2rem 0;}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:.85rem;}
+.card{background:var(--white);border-radius:12px;padding:1.1rem;border:.5px solid #d4e8da;transition:transform .18s,box-shadow .18s;}
+.card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(26,77,48,.1);}
+.card-age{font-size:.68rem;text-transform:uppercase;letter-spacing:.7px;color:var(--gm);font-weight:600;margin-bottom:.6rem;}
+.card-block{margin-bottom:.65rem;}
+.card-block label{display:flex;align-items:center;gap:4px;font-size:.66rem;text-transform:uppercase;letter-spacing:.5px;color:#9ab5a0;font-weight:600;margin-bottom:.22rem;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gm);flex-shrink:0;}
+.card-block p{font-size:.78rem;color:var(--muted);line-height:1.5;}
+
+/* PILAR */
+.pilar{background:var(--white);border-left:4px solid var(--gm);border-radius:0 12px 12px 0;padding:1.5rem 1.75rem;margin:2rem 0;box-shadow:0 2px 12px rgba(26,77,48,.06);}
+.pilar h2{font-family:'Playfair Display',serif;color:var(--gd);font-size:1.1rem;margin-bottom:.75rem;}
+.pilar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.85rem;margin-top:.85rem;}
+.pilar-item{background:var(--gs);border-radius:10px;padding:.85rem 1rem;}
+.pilar-item strong{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.6px;color:var(--gm);margin-bottom:.3rem;}
+.pilar-item p{font-size:.8rem;color:var(--muted);line-height:1.5;}
+
+/* AMBIENT */
+.ambient{background:var(--gd);border-radius:14px;padding:1.75rem;margin:2.5rem 0;color:var(--white);}
+.ambient h2{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1.1rem;opacity:.9;}
+.ambient-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:.9rem;}
+.ambient-item{background:rgba(255,255,255,.08);border-radius:10px;padding:.95rem;}
+.ambient-item strong{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;color:#8ed4aa;margin-bottom:.3rem;}
+.ambient-item p{font-size:.78rem;opacity:.78;line-height:1.55;}
+
+footer{background:var(--text);color:rgba(255,255,255,.5);text-align:center;padding:1.5rem 1rem;font-size:.76rem;margin-top:4rem;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Programa Clínico Bariátrico</div>
+  <h1>Salud y Nutrición Evolutiva</h1>
+  <p>Enfoque clínico adaptado por décadas de edad. Optimiza tu metabolismo, masa muscular y reduce la carga tóxica ambiental.</p>
+</header>
+
+<nav class="nav">
+  <a href="#plan">⭐ Plan 8 Semanas</a>
+  <a href="#peso">Pérdida de peso</a>
+  <a href="#musculo">Masa muscular</a>
+  <a href="#longevidad">Preservación</a>
+  <a href="#entorno">Entorno biológico</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- ── PRODUCTO DESTACADO ── -->
+  <div id="plan" class="product-hero">
+    <div>
+      <span class="badge-new">Nuevo · Descargable</span>
+      <h2>Plan Completo de 8 Semanas</h2>
+      <p class="sub">Dieta diaria variada y económica + rutina de ejercicio personalizada por grupo de edad. Todo en un solo PDF.</p>
+      <ul class="feat-list">
+        <li>8 semanas de menú diario (desayuno, comida, cena, colación)</li>
+        <li>Ingredientes accesibles y de temporada</li>
+        <li>Rutinas adaptadas para 18–29, 30–39, 40–49, 50–59 y 60–69 años</li>
+        <li>Guía de entorno libre de toxinas incluida</li>
+        <li>Descarga inmediata en PDF</li>
+      </ul>
+    </div>
+    <div class="price-block">
+      <div class="pdf-preview">
+        <span class="pdf-icon">📋</span>
+        <p>Plan Integral 8 Semanas<br>Nutrición · Ejercicio · Bienestar</p>
+      </div>
+      <div style="margin-top:1.25rem;">
+        <div class="price-tag">$14</div>
+        <div class="price-sub">USD · Pago único · Acceso inmediato</div>
+        <a href="https://link.mercadopago.com.mx/plan8s" target="_blank" class="btn-buy">Obtener mi plan ahora</a>
+        <div class="guarantee">🔒 Pago seguro · Descarga inmediata</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILAR -->
+  <div class="pilar">
+    <h2>Pilar fundamental: Nutrición Biológica Evolutiva</h2>
+    <p style="font-size:.86rem;color:var(--muted);line-height:1.65;">Este programa prioriza alimentos en su estado más natural y reduce la exposición a disruptores metabólicos modernos.</p>
+    <div class="pilar-grid">
+      <div class="pilar-item"><strong>Cero procesados</strong><p>Eliminación de fuentes de BPA y excesos de sodio en enlatados.</p></div>
+      <div class="pilar-item"><strong>Hogar sin químicos</strong><p>Productos Melaleuca EcoSense: concentrados de origen natural, sin cloro ni amoníaco, biodegradables y seguros para toda la familia.</p></div>
+      <div class="pilar-item"><strong>Control de oxalatos</strong><p>Cocinar al vapor o hervido para proteger la función renal.</p></div>
+      <div class="pilar-item"><strong>Origen natural</strong><p>Orgánicos, carnes de libre pastoreo y productos locales sin pesticidas.</p></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SEC 1 -->
+  <div id="peso" class="sec">
+    <div class="sec-header"><div class="sec-num">1</div><h2>Pérdida de peso y control de obesidad</h2></div>
+    <p class="sec-desc">Déficit calórico controlado, mejora de la sensibilidad a la insulina y protección articular.</p>
+    <div class="grid">
+      <div class="card"><div class="card-age">18 – 29 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Normoproteico sin carbs simples. Huevos de pastoreo, pollo orgánico y vegetales bajos en oxalatos.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Fuerza + HIIT. 4 sesiones de pesas y 2 de cardio interválico semanal.</p></div></div>
+      <div class="card"><div class="card-age">30 – 39 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Ayuno intermitente 14/10. Pescados salvajes y crucíferas al vapor.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Circuitos metabólicos de fuerza con peso corporal.</p></div></div>
+      <div class="card"><div class="card-age">40 – 49 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Reducción moderada de carbs. Camote o calabaza. Cero embutidos.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Fuerza en grandes grupos musculares para estimular testosterona natural.</p></div></div>
+      <div class="card"><div class="card-age">50 – 59 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Mediterránea modificada. Proteínas de fácil digestión y caldo de huesos.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Máquinas guiadas + caminatas ágiles de 30–45 min diarios.</p></div></div>
+      <div class="card"><div class="card-age">60 – 69 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Proteína distribuida en 3 comidas. Magnesio natural (citrato o glicinato).</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Calistenia ligera, bandas de resistencia y natación.</p></div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SEC 2 -->
+  <div id="musculo" class="sec">
+    <div class="sec-header"><div class="sec-num">2</div><h2>Ganancia de masa muscular y tonificación</h2></div>
+    <p class="sec-desc">Excedente calórico limpio, estímulo mecánico progresivo y síntesis proteica óptima.</p>
+    <div class="grid">
+      <div class="card"><div class="card-age">18 – 29 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Hipercalórica limpia. Arroz integral, avena, carne de pastoreo y batidos naturales.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Push/Pull/Legs al 70–85% de 1RM. Sobrecarga progresiva.</p></div></div>
+      <div class="card"><div class="card-age">30 – 39 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Alta densidad nutricional. Tubérculos post-entreno. Grasas de coco o ghee.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Torso-pierna 4 días/semana. Tiempo bajo tensión.</p></div></div>
+      <div class="card"><div class="card-age">40 – 49 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Antiinflamatorio estricto. Arándanos y moras para el estrés oxidativo.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>8–12 repeticiones controladas. Poleas y pesos libres excéntricos.</p></div></div>
+      <div class="card"><div class="card-age">50 – 59 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Aminoácidos esenciales limpios. Control de oxalatos para zinc y calcio.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Full Body 3 veces/semana con descansos completos.</p></div></div>
+      <div class="card"><div class="card-age">60 – 69 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Grasas protectoras del sistema nervioso. Vegetales fermentados caseros.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Bandas elásticas y calistenia. Postura y estabilidad del Core.</p></div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SEC 3 -->
+  <div id="longevidad" class="sec">
+    <div class="sec-header"><div class="sec-num">3</div><h2>Preservación muscular y buena motricidad</h2></div>
+    <p class="sec-desc">Combatir la sarcopenia y la dinapenia para asegurar la autonomía funcional a largo plazo.</p>
+    <div class="grid">
+      <div class="card"><div class="card-age">18 – 29 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Sin aditivos. Construir base ósea y muscular sólida desde etapas tempranas.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Patrones motrices básicos: sentadilla y peso muerto. Flexibilidad.</p></div></div>
+      <div class="card"><div class="card-age">30 – 39 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Micronutrientes de alta biodisponibilidad. Preferir orgánicos.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Movilidad activa: yoga o pilates clínico complementando la fuerza.</p></div></div>
+      <div class="card"><div class="card-age">40 – 49 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Nutrientes preventivos para cartílagos. Cero enlatados.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Fuerza funcional con coordinación y agilidad.</p></div></div>
+      <div class="card"><div class="card-age">50 – 59 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Mínimo 30g de proteína limpia por porción. Verduras cocidas.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Potencia ligera con fase concéntrica rápida para fibras Tipo II.</p></div></div>
+      <div class="card"><div class="card-age">60 – 69 años</div><div class="card-block"><label><span class="dot"></span>Dieta</label><p>Sopas caseras, proteínas blandas. Hidratación sin residuos.</p></div><div class="card-block"><label><span class="dot"></span>Ejercicio</label><p>Fuerza funcional básica y equilibrio dinámico. Zancadas asistidas.</p></div></div>
+    </div>
+  </div>
+
+  <!-- ENTORNO -->
+  <div id="entorno" class="ambient">
+    <h2>Limpieza del hogar sin tóxicos: productos Melaleuca EcoSense</h2>
+    <p style="font-size:.8rem;opacity:.65;margin-bottom:1.25rem;line-height:1.6;">La línea EcoSense de Melaleuca usa ingredientes de origen natural y fórmulas superconcentradas — sin cloro, sin amoníaco, sin químicos cáusticos. Una sola botella concentrada rinde hasta 6 botellas rociadoras tradicionales.</p>
+    <div class="ambient-grid" style="grid-template-columns:repeat(auto-fit,minmax(155px,1fr));">
+      <div class="ambient-item">
+        <strong>Sol-U-Guard Botanical®</strong>
+        <p>Desinfectante botánico que elimina el 99.9% de gérmenes y virus usando aceite de tomillo y ácido cítrico. Reemplaza al cloro y al Lysol® sin químicos cáusticos.</p>
+      </div>
+      <div class="ambient-item">
+        <strong>Tough & Tender®</strong>
+        <p>Limpiador multiusos de origen vegetal. Limpia todas las superficies del hogar — encimeras, muebles, electrodomésticos y piedra natural — sin rellenos ni agua innecesaria.</p>
+      </div>
+      <div class="ambient-item">
+        <strong>Sol-U-Mel® 3 en 1</strong>
+        <p>Quitamanchas y desodorizante con aceite de melaleuca T36-C5. Elimina manchas de marcador, chicle, mascotas y más. Reemplaza al Goo Gone® y Resolve® de forma natural.</p>
+      </div>
+      <div class="ambient-item">
+        <strong>Tub & Tile™</strong>
+        <p>Limpiador de baño superconcentrado. Elimina el sarro y los residuos de jabón gracias al ácido glicólico de origen vegetal. Seguro en porcelana, acrílico y azulejos.</p>
+      </div>
+      <div class="ambient-item">
+        <strong>Clear Power®</strong>
+        <p>Limpiador de vidrios y superficies brillantes con ácido glicólico vegetal. Deja espejos, ventanas y acero inoxidable impecables sin amoníaco. Reemplaza al Windex®.</p>
+      </div>
+      <div class="ambient-item">
+        <strong>MelaPower® + PreSpot</strong>
+        <p>Detergente de ropa ultraconcentrado con enzimas naturales para manchas difíciles. Libre de blanqueadores cáusticos y más económico que las marcas convencionales.</p>
+      </div>
+    </div>
+    <p style="font-size:.72rem;opacity:.5;margin-top:1rem;text-align:center;">Melaleuca EcoSense · melaleuca.com · Productos disponibles bajo membresía</p>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div style="text-align:center;padding:3rem 1rem 2rem;">
+    <p style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;">¿Listo para empezar?</p>
+    <h2 style="font-family:'Playfair Display',serif;color:var(--gd);font-size:1.7rem;margin-bottom:.75rem;">Obtén el plan completo de 8 semanas</h2>
+    <p style="font-size:.9rem;color:var(--muted);max-width:440px;margin:0 auto 1.5rem;line-height:1.65;">Dieta diaria económica + rutina personalizada por edad. Todo lo que necesitas en un solo PDF descargable.</p>
+    <a href="https://link.mercadopago.com.mx/plan8s" target="_blank" class="btn-buy" style="background:var(--gd);">Descargar por $14 USD</a>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:.75rem;">🔒 Pago seguro · Descarga inmediata · Acceso de por vida</p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Portal de Medicina Bariátrica y Nutrición Evolutiva &nbsp;·&nbsp; Contenido con fines educativos y de orientación clínica
+</footer>
+
+
+</body>
+</html>
